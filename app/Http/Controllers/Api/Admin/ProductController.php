@@ -51,8 +51,8 @@ class ProductController extends Controller
             'description'   => 'required',
             'weight'        => 'required',
             'price'         => 'required',
-            'stock'         => 'required',
-            'discount'      => 'required'
+            // 'stock'         => 'required',
+            // 'discount'      => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -71,8 +71,8 @@ class ProductController extends Controller
             'description'   => $request->description,
             'weight'        => $request->weight,
             'price'         => $request->price,
-            'stock'         => $request->stock,
-            'discount'      => $request->discount
+            // 'stock'         => $request->stock,
+            // 'discount'      => $request->discount
         ]);
 
         if ($product) {
@@ -127,8 +127,8 @@ class ProductController extends Controller
             'description'   => 'required',
             'weight'        => 'required',
             'price'         => 'required',
-            'stock'         => 'required',
-            'discount'      => 'required'
+            // 'stock'         => 'required',
+            // 'discount'      => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -150,8 +150,8 @@ class ProductController extends Controller
                 'description'   => $request->description,
                 'weight'        => $request->weight,
                 'price'         => $request->price,
-                'stock'         => $request->stock,
-                'discount'      => $request->discount
+                // 'stock'         => $request->stock,
+                // 'discount'      => $request->discount
             ]);
         }
         $product->update([
@@ -162,8 +162,8 @@ class ProductController extends Controller
             'description'   => $request->description,
             'weight'        => $request->weight,
             'price'         => $request->price,
-            'stock'         => $request->stock,
-            'discount'      => $request->discount
+            // 'stock'         => $request->stock,
+            // 'discount'      => $request->discount
         ]);
 
         if($product) {

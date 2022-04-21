@@ -59,8 +59,9 @@ class CheckoutController extends Controller
             $invoice = Invoice::create([
                 'invoice'           => $no_invoice,
                 'customer_id'       => auth()->guard('api_customer')->user()->id,
-                'courier'           => $request->courier,
-                'courier_service'   => $request->courier_service,
+                // 'courier'           => $request->courier,
+                // 'courier_service'   => $request->courier_service,
+                'note'              => $request->note,
                 'courier_cost'      => $request->courier_cost,
                 'weight'            => $request->weight,
                 'name'              => $request->name,
@@ -79,7 +80,7 @@ class CheckoutController extends Controller
                 $invoice->orders()->create([
                     'invoice_id'    => $invoice->id,
                     'product_id'    => $cart->product_id,
-                    'qty'           => $cart->qty,
+                    // 'qty'           => $cart->qty,
                     'price'         => $cart->price,
                 ]);
 

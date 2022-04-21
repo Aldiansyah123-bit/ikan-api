@@ -53,20 +53,25 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $item = Cart::where('product_id', $request->product_id)->where('customer_id', auth()->guard('api_customer')->user()->id);
+        $items = Cart::where('product_id', $request->product_id)->where('customer_id', auth()->guard('api_customer')->user()->id);
 
         //check if product already in cart and increment qty
-        if ($item->count()) {
+        if ($item->count() && $items->count()) {
 
             //increment quantity
-            $item->increment('qty');
+            $item->increment('weight');
 
             $item = $item->first();
 
+            $items->increment('price');
+
+            $items = $items->first();
+
             //sum price * quantity
-            $price = $request->price * $item->qty;
+            $price = $request->price + $items->price - 1;
 
             //sum weight
-            $weight = $request->weight * $item->qty;
+            $weight = $request->weight + $item->weight - 1;
 
             $item->update([
                 'price'     => $price,
@@ -79,7 +84,7 @@ class CartController extends Controller
             $item = Cart::create([
                 'product_id'    => $request->product_id,
                 'customer_id'   => auth()->guard('api_customer')->user()->id,
-                'qty'           => $request->qty,
+                // 'qty'           => $request->qty,
                 'price'         => $request->price,
                 'weight'        => $request->weight
             ]);

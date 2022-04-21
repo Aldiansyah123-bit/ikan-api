@@ -10,7 +10,7 @@ class Invoice extends Model
     use HasFactory;
 
     protected $fillable = [
-        'invoice','customer_id','courier','courier_service','courier_cost','weight',
+        'invoice','customer_id','courier','courier_service','courier_cost','weight', 'note',
         'name','phone','city_id','province_id','address','status','grand_total','snap_token'
     ];
 
