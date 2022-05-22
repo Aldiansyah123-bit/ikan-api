@@ -23,8 +23,6 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->integer('weight');
             $table->bigInteger('price');
-            $table->integer('stock');
-            $table->integer('discount');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories');

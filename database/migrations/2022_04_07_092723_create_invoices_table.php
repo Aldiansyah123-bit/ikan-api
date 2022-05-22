@@ -17,8 +17,8 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->string('invoice');
             $table->unsignedBigInteger('customer_id');
-            $table->string('courier');
-            $table->string('courier_service');
+            // $table->string('courier');
+            // $table->string('courier_service');
             $table->bigInteger('courier_cost');
             $table->integer('weight');
             $table->string('name');
@@ -26,6 +26,7 @@ class CreateInvoicesTable extends Migration
             $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('province_id');
             $table->text('address');
+            $table->text('note');
             $table->enum('status', array('pending','success','expered','failed'));
             $table->bigInteger('grand_total');
             $table->string('snap_token')->nullable();
