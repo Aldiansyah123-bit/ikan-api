@@ -42,7 +42,27 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'name'      => 'required',
+            'email'     => 'required|email|unique:users',
+            'password'  => 'required|confirmed'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(),422);
+        }
+
+        $user = User::create([
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'password'  => bcrypt($request->password),
+        ]);
+
+        if ($user) {
+            return new UserResource(true, ' Data Berhasil di Tambah', $user);
+        }
+
+        return new UserResource(false, 'Data Gagal di Simpan',null);
     }
 
     /**
