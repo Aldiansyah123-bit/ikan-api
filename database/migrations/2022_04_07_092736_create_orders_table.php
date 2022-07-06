@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('invoice_id');
             $table->unsignedBigInteger('product_id');
-            $table->integer('qty');
+            $table->integer('weight');
             $table->bigInteger('price');
             $table->timestamps();
 

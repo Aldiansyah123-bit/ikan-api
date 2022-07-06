@@ -55,11 +55,19 @@ class CheckoutController extends Controller
             //generate no invoice
             $no_invoice = 'INV-'.Str::upper($random);
 
+            if ($request->courier == 'jne') {
+                $courier = 'Armada 1';
+            }elseif ($request->courier == 'tiki') {
+                $courier = 'Armada 2';
+            }elseif ($request->courier == 'pos') {
+                $courier = 'Armada 3';
+            }
+
             //store invoice
             $invoice = Invoice::create([
                 'invoice'           => $no_invoice,
                 'customer_id'       => auth()->guard('api_customer')->user()->id,
-                // 'courier'           => $request->courier,
+                'courier'           => $courier,
                 // 'courier_service'   => $request->courier_service,
                 'note'              => $request->note,
                 'courier_cost'      => $request->courier_cost,
@@ -80,7 +88,7 @@ class CheckoutController extends Controller
                 $invoice->orders()->create([
                     'invoice_id'    => $invoice->id,
                     'product_id'    => $cart->product_id,
-                    // 'qty'           => $cart->qty,
+                    'weight'        => $cart->weight,
                     'price'         => $cart->price,
                 ]);
 

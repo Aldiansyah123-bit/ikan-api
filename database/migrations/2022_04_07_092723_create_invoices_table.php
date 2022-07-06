@@ -17,7 +17,7 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->string('invoice');
             $table->unsignedBigInteger('customer_id');
-            // $table->string('courier');
+            $table->string('courier');
             // $table->string('courier_service');
             $table->bigInteger('courier_cost');
             $table->integer('weight');
