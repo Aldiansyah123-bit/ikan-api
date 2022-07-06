@@ -56,7 +56,7 @@ class CheckoutController extends Controller
             $no_invoice = 'INV-'.Str::upper($random);
 
             if ($request->courier == 'jne') {
-                $courier = 'Armada 1';
+                $courier = 'Armada';
             }elseif ($request->courier == 'tiki') {
                 $courier = 'Armada 2';
             }elseif ($request->courier == 'pos') {
